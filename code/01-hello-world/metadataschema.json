@@ -1,0 +1,471 @@
+{
+  "BlueprintMetadata": {
+    // BlueprintMetadata defines the overall structure for blueprint metadata.
+    "attributes": {
+      // APIVersion is the apiVersion field of a metadata file. Gen: auto-generated.
+      "ApiVersion": "string",
+      // Kind is the kind field of a metadata file. Gen: auto-generated.
+      "Kind": "string",
+      // ResourceTypeMeta is the metadata field of a metadata file. Gen: partial.
+      "Metadata": {
+        "type": "*ResourceTypeMeta", // Type definition for ResourceTypeMeta.
+        "definition": {
+          // ResourceTypeMeta holds metadata like name, labels, annotations.
+          "attributes": {
+            // Annotations is the metadata.annotations field of a Resource. Gen: auto-generated.
+            "Annotations": "map[string]string",
+            // Labels is the metadata.labels field of a Resource. Gen: manually-authored.
+            "Labels": "map[string]string",
+            // Name is the metadata.name field of a Resource. Gen: auto-generated.
+            "Name": "string"
+          }
+        }
+      },
+      // BlueprintMetadataSpec is the metadata specification for the blueprint. Gen: partial.
+      "Spec": {
+        "type": "*BlueprintMetadataSpec", // Type definition for BlueprintMetadataSpec.
+        "definition": {
+          // BlueprintMetadataSpec defines the spec portion of the blueprint metadata.
+          "attributes": {
+            // BlueprintContent defines the detail for blueprint related content. Gen: partial.
+            "Content": {
+              "type": "*BlueprintContent", // Type definition for BlueprintContent.
+              "definition": {
+                // BlueprintContent defines details like architecture, diagrams, documentation, examples etc.
+                "attributes": {
+                  // Architecture defines the blueprint's architecture diagram and description. Gen: auto-generated.
+                  "Architecture": {
+                    "type": "*BlueprintArchitecture", // Type definition for BlueprintArchitecture.
+                    "definition": {
+                      "attributes": {
+                        // DiagramUrl: URL to the architecture diagram image. Gen: auto-generated.
+                        "DiagramUrl": "string",
+                        // Description: List of steps/items describing the architecture. Gen: auto-generated.
+                        "Description": {
+                          "type": "[]string",
+                          "definition": "string" // Each item in the array is a string.
+                        }
+                      }
+                    }
+                  },
+                  // Diagrams: List of additional diagrams related to the blueprint. Gen: manually-authored.
+                  "Diagrams": {
+                    "type": "[]*BlueprintDiagram", // Array of BlueprintDiagram objects.
+                    "definition": {
+                      // BlueprintDiagram represents a single diagram with name, alt text, and description.
+                      "attributes": {
+                        // AltText: Alternative text for the diagram image.
+                        "AltText": "string",
+                        // Description: Description of the diagram.
+                        "Description": "string",
+                        // Name: Name or title of the diagram.
+                        "Name": "string"
+                      }
+                    }
+                  },
+                  // Documentation: List of relevant documentation links. Gen: auto-generated from "## Documentation" tag.
+                  "Documentation": {
+                    "type": "[]*BlueprintListContent", // Array of BlueprintListContent objects.
+                    "definition": {
+                      // BlueprintListContent represents a list item, typically a link with a title.
+                      "attributes": {
+                        // Title: Title of the documentation link.
+                        "Title": "string",
+                        // Url: URL of the documentation link.
+                        "Url": "string"
+                      }
+                    }
+                  },
+                  // Examples: List of examples associated with the blueprint (e.g., under examples/). Gen: auto-generated.
+                  "Examples": {
+                    "type": "[]*BlueprintMiscContent", // Array of BlueprintMiscContent objects.
+                    "definition": {
+                      // BlueprintMiscContent represents miscellaneous content like examples or sub-blueprints.
+                      "attributes": {
+                        // Location: Path or location of the example.
+                        "Location": "string",
+                        // Name: Name of the example.
+                        "Name": "string"
+                      }
+                    }
+                  },
+                  // SubBlueprints: List of sub-blueprints or modules (e.g., under modules/). Gen: auto-generated.
+                  "SubBlueprints": {
+                    "type": "[]*BlueprintMiscContent", // Array of BlueprintMiscContent objects.
+                    "definition": {
+                      // BlueprintMiscContent represents miscellaneous content like examples or sub-blueprints.
+                      "attributes": {
+                        // Location: Path or location of the sub-blueprint.
+                        "Location": "string",
+                        // Name: Name of the sub-blueprint.
+                        "Name": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            // BlueprintInfo defines the basic information of the blueprint. Gen: partial.
+            "Info": {
+              "type": "*BlueprintInfo", // Type definition for BlueprintInfo.
+              "definition": {
+                // BlueprintInfo holds basic details like title, source, version, author, costs, etc.
+                "attributes": {
+                  // ActuationTool: Defines the actuation tool (e.g., Terraform) and its required version. Gen: auto-generated.
+                  "ActuationTool": {
+                    "type": "*BlueprintActuationTool", // Type definition for BlueprintActuationTool.
+                    "definition": {
+                      "attributes": {
+                        // Flavor: The actuation tool name (e.g., "Terraform"). Gen: auto-generated.
+                        "Flavor": "string",
+                        // Version: Required version for the actuation tool. Gen: auto-generated.
+                        "Version": "string"
+                      }
+                    }
+                  },
+                  // Author: Details about the blueprint author or organization. Gen: manually-authored.
+                  "Author": {
+                    "type": "*BlueprintAuthor", // Type definition for BlueprintAuthor.
+                    "definition": {
+                      "attributes": {
+                        // Title: Name of the author or organization. Gen: manually-authored.
+                        "Title": "string",
+                        // Description: Description of the author. Gen: manually-authored.
+                        "Description": "string",
+                        // Url: Link to the author's website. Gen: manually-authored.
+                        "Url": "string"
+                      }
+                    }
+                  },
+                  // CloudProducts: List of GCP cloud products used in the blueprint. Gen: manually-authored.
+                  "CloudProducts": {
+                    "type": "[]*BlueprintCloudProduct", // Array of BlueprintCloudProduct objects.
+                    "definition": {
+                      // BlueprintCloudProduct represents a GCP product used.
+                      "attributes": {
+                        // ProductId: Top-level or secondary product ID (e.g., "compute.googleapis.com"). Gen: manually-authored.
+                        "ProductId": "string",
+                        // PageUrl: URL for the product's page. Gen: manually-authored.
+                        "PageUrl": "string",
+                        // Label: Label string if not an integrated GCP product (e.g., "Data Studio"). Gen: manually-authored.
+                        "Label": "string",
+                        // IsExternal: Whether the product page is external to GCP console. Gen: manually-authored.
+                        "IsExternal": "bool"
+                      }
+                    }
+                  },
+                  // CostEstimate: Estimated cost of the blueprint. Gen: auto-generated from "### Cost".
+                  "CostEstimate": {
+                    "type": "*BlueprintCostEstimate", // Type definition for BlueprintCostEstimate.
+                    "definition": {
+                      "attributes": {
+                        // Description: Description accompanying the cost URL. Gen: auto-generated.
+                        "Description": "string",
+                        // Url: Link to the cost calculator or estimate. Gen: auto-generated.
+                        "Url": "string"
+                      }
+                    }
+                  },
+                  // DeploymentDuration: Estimated time for configuration and deployment. Gen: auto-generated from "### DeploymentTime".
+                  "DeploymentDuration": {
+                    "type": "*BlueprintTimeEstimate", // Type definition for BlueprintTimeEstimate.
+                    "definition": {
+                      "attributes": {
+                        // ConfigurationSecs: Time estimate in seconds for configuration. Gen: auto-generated.
+                        "ConfigurationSecs": "int64",
+                        // DeploymentSecs: Time estimate in seconds for deployment. Gen: auto-generated.
+                        "DeploymentSecs": "int64"
+                      }
+                    }
+                  },
+                  // Description: Various textual descriptions of the blueprint. Gen: auto-generated from README sections.
+                  "Description": {
+                    "type": "*BlueprintDescription", // Type definition for BlueprintDescription.
+                    "definition": {
+                      "attributes": {
+                        // Architecture: Deprecated. Use BlueprintContent.Architecture. Gen: auto-generated.
+                        "Architecture": {
+                          "type": "[]string",
+                          "definition": "string"
+                        },
+                        // Detailed: Detailed description (Markdown after "### Detailed"). Gen: auto-generated.
+                        "Detailed": "string",
+                        // EulaUrls: List of EULA URLs (Markdown after "### EulaUrls"). Gen: auto-generated.
+                        "EulaUrls": {
+                          "type": "[]string",
+                          "definition": "string"
+                        },
+                        // Html: HTML description (Markdown after "### Html"). Gen: auto-generated.
+                        "Html": "string",
+                        // PreDeploy: Pre-deployment instructions (Markdown after "### PreDeploy"). Gen: auto-generated.
+                        "PreDeploy": "string",
+                        // Tagline: Short tagline (Markdown after "### Tagline"). Gen: auto-generated.
+                        "Tagline": "string"
+                      }
+                    }
+                  },
+                  // Icon: Path to the blueprint's icon image (e.g., "assets/icon.png"). Gen: auto-generated.
+                  "Icon": "string",
+                  // OrgPolicyChecks: List of GCP org policies to check for deployment success. Gen: manually-authored.
+                  "OrgPolicyChecks": {
+                    "type": "[]*BlueprintOrgPolicyCheck", // Array of BlueprintOrgPolicyCheck objects.
+                    "definition": {
+                      // BlueprintOrgPolicyCheck defines a specific org policy check.
+                      "attributes": {
+                        // PolicyId: ID of the policy (e.g., "compute-vmExternalIpAccess"). Gen: manually-authored.
+                        "PolicyId": "string",
+                        // RequiredValues: List of required values for the policy (if not set, any version might block). Gen: manually-authored.
+                        "RequiredValues": {
+                          "type": "[]string",
+                          "definition": "string"
+                        }
+                      }
+                    }
+                  },
+                  // QuotaDetails: Configuration of fixed and dynamic GCP quotas. Gen: manually-authored.
+                  "QuotaDetails": {
+                    "type": "[]*BlueprintQuotaDetail", // Array of BlueprintQuotaDetail objects.
+                    "definition": {
+                      // BlueprintQuotaDetail defines quota details for a specific resource type.
+                      "attributes": {
+                        // DynamicVariable: Input variable associated with the resource for dynamic quota calculation. Gen: manually-authored.
+                        "DynamicVariable": "string",
+                        // QuotaType: Key/value map of specific quotas (e.g., {"CPUs": "4"}). Valid keys: MACHINE_TYPE, CPUs, DISK_TYPE, SIZE_GB. Gen: manually-authored.
+                        "QuotaType": {
+                          "type": "map[string]string",
+                          "definition": "string"
+                        },
+                        // ResourceType: The type of resource the quota applies to (e.g., GCE_INSTANCE). Gen: manually-authored.
+                        "ResourceType": "QuotaResourceType" // Enum: QRT_UNDEFINED, QRT_RESOURCE_TYPE_GCE_INSTANCE, QRT_RESOURCE_TYPE_GCE_DISK
+                      }
+                    }
+                  },
+                  // SingleDeployment: If true, blueprint can only be deployed once per project. Gen: manually-authored.
+                  "SingleDeployment": "bool",
+                  // SoftwareGroups: Details on software installed by the blueprint. Gen: manually-authored.
+                  "SoftwareGroups": {
+                    "type": "[]*BlueprintSoftwareGroup", // Array of BlueprintSoftwareGroup objects.
+                    "definition": {
+                      // BlueprintSoftwareGroup groups related software components.
+                      "attributes": {
+                        // Software: List of software components in this group. Gen: manually-authored.
+                        "Software": {
+                          "type": "[]*BlueprintSoftware", // Array of BlueprintSoftware objects.
+                          "definition": {
+                            // BlueprintSoftware describes a single software component.
+                            "attributes": {
+                              // LicenseUrl: Link to the software's license page. Gen: manually-authored.
+                              "LicenseUrl": "string",
+                              // Title: User-visible title of the software. Gen: manually-authored.
+                              "Title": "string",
+                              // Url: Link to the software's development site or marketing page. Gen: manually-authored.
+                              "Url": "string",
+                              // Version: Software version. Gen: manually-authored.
+                              "Version": "string"
+                            }
+                          }
+                        },
+                        // Type: Pre-defined type of the software group (e.g., OS). Gen: manually-authored.
+                        "Type": "SoftwareGroupType" // Enum: SG_UNSPECIFIED, SG_OS
+                      }
+                    }
+                  },
+                  // Source: Blueprint source location (repository details). Gen: auto-generated.
+                  "Source": {
+                    "type": "*BlueprintRepoDetail", // Type definition for BlueprintRepoDetail.
+                    "definition": {
+                      "attributes": {
+                        // Dir: Directory within the repo (for submodules). Gen: auto-generated.
+                        "Dir": "string",
+                        // Repo: Repository URL. Gen: auto-generated from .git dir.
+                        "Repo": "string",
+                        // SourceType: Type of source (e.g., "git"). Gen: auto-generated.
+                        "SourceType": "string"
+                      }
+                    }
+                  },
+                  // SupportInfo: Information on support offered for the blueprint. Gen: manually-authored.
+                  "SupportInfo": {
+                    "type": "*BlueprintSupport", // Type definition for BlueprintSupport.
+                    "definition": {
+                      "attributes": {
+                        // Description: Description of the support option. Gen: manually-authored.
+                        "Description": "string",
+                        // Entity: Organization providing support (e.g., "Community", "Google"). Gen: manually-authored.
+                        "Entity": "string",
+                        // ShowSupportId: Whether to show the customer's support ID. Gen: manually-authored.
+                        "ShowSupportId": "bool",
+                        // Url: Link to the support page. Gen: manually-authored.
+                        "Url": "string"
+                      }
+                    }
+                  },
+                  // Title: Title for the blueprint. Gen: auto-generated from first H1 in README.
+                  "Title": "string",
+                  // Version: Last released semantic version of the blueprint. Gen: auto-generated from provider_meta.
+                  "Version": "string"
+                }
+              }
+            },
+            // BlueprintInterface defines the input and output variables. Gen: partial.
+            "Interfaces": {
+              "type": "*BlueprintInterface", // Type definition for BlueprintInterface.
+              "definition": {
+                // BlueprintInterface holds input variables, variable groups, and outputs.
+                "attributes": {
+                  // Outputs: List of all defined outputs for the blueprint. Gen: auto-generated.
+                  "Outputs": {
+                    "type": "[]*BlueprintOutput", // Array of BlueprintOutput objects.
+                    "definition": {
+                      // BlueprintOutput describes a single output variable.
+                      "attributes": {
+                        // Description: Description of the output variable.
+                        "Description": "string",
+                        // Name: Name of the output variable.
+                        "Name": "string",
+                        // Type: Serialized type representation of the output value. Gen: manually-authored (will be automated).
+                        "Type": {
+                          "type": "*structpb.Value", // Represents a dynamic JSON value.
+                          "definition": "any"
+                        }
+                      }
+                    }
+                  },
+                  // VariableGroups: Logical groups of input variables. Gen: manually-authored.
+                  "VariableGroups": {
+                    "type": "[]*BlueprintVariableGroup", // Array of BlueprintVariableGroup objects.
+                    "definition": {
+                      // BlueprintVariableGroup defines a group of variables for logical organization.
+                      "attributes": {
+                        // Description: Description of the variable group.
+                        "Description": "string",
+                        // Name: Name of the variable group.
+                        "Name": "string",
+                        // Variables: List of variable names included in this group.
+                        "Variables": {
+                          "type": "[]string",
+                          "definition": "string"
+                        }
+                      }
+                    }
+                  },
+                  // Variables: List of all defined input variables for the blueprint. Gen: auto-generated.
+                  "Variables": {
+                    "type": "[]*BlueprintVariable", // Array of BlueprintVariable objects.
+                    "definition": {
+                      // BlueprintVariable describes a single input variable.
+                      "attributes": {
+                        // Connections: Incoming connections (outputs from other blueprints) to this variable. Gen: manually-authored.
+                        "Connections": {
+                          "type": "[]*BlueprintConnection", // Array of BlueprintConnection objects.
+                          "definition": {
+                             // BlueprintConnection defines an incoming connection from another blueprint.
+                            "attributes": {
+                              // Source: Defines the source blueprint of the connection. Gen: manually-authored.
+                              "Source": {
+                                "type": "*ConnectionSource", // Type definition for ConnectionSource.
+                                "definition": {
+                                  "attributes": {
+                                    // Source: Module source identifier (registry or Git URL). Gen: manually-authored.
+                                    "Source": "string",
+                                    // Version: Version constraint for the source module. Gen: manually-authored.
+                                    "Version": "string"
+                                  }
+                                }
+                              },
+                              // Spec: Defines the connection specifications (output to input mapping). Gen: manually-authored.
+                              "Spec": {
+                                "type": "*ConnectionSpec", // Type definition for ConnectionSpec.
+                                "definition": {
+                                  "attributes": {
+                                    // InputPath: Optional dot-separated attribute path for complex input object field connection. Gen: manually-authored.
+                                    "InputPath": "string", // Note: type is *string in Go, meaning optional.
+                                    // OutputExpr: Output expression from the source blueprint (e.g., output name or attribute access). Gen: manually-authored.
+                                    "OutputExpr": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        // DefaultValue: Default value for the input variable. Gen: auto-generated from Terraform variable default.
+                        "DefaultValue": {
+                          "type": "*structpb.Value", // Represents a dynamic JSON value.
+                          "definition": "any"
+                        },
+                        // Description: Description of the input variable. Gen: auto-generated from Terraform variable description.
+                        "Description": "string",
+                        // Name: Name of the input variable. Gen: auto-generated from Terraform variable name.
+                        "Name": "string",
+                        // Required: Whether the input variable is required. Gen: auto-generated (true if no default value).
+                        "Required": "bool",
+                        // VarType: Type of the input variable (e.g., "string", "number", "list(string)"). Gen: auto-generated from Terraform variable type.
+                        "VarType": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            // BlueprintRequirements defines roles and services needed. Gen: auto-generated.
+            "Requirements": {
+              "type": "*BlueprintRequirements", // Type definition for BlueprintRequirements.
+              "definition": {
+                // BlueprintRequirements lists required IAM roles, GCP services, and provider versions.
+                "attributes": {
+                  // ProviderVersions: Required provider versions. Gen: auto-generated from required_providers block.
+                  "ProviderVersions": {
+                    "type": "[]*ProviderVersion", // Array of ProviderVersion objects.
+                    "definition": {
+                       // ProviderVersion defines a required version for a specific provider.
+                      "attributes": {
+                        // Source: Provider source identifier (e.g., "hashicorp/google"). Gen: auto-generated.
+                        "Source": "string",
+                        // Version: Version constraint string (e.g., ">= 4.0"). Gen: auto-generated.
+                        "Version": "string"
+                      }
+                    }
+                  },
+                  // Roles: List of required IAM roles for blueprint deployment. Gen: auto-generated from test/setup/iam.tf.
+                  "Roles": {
+                    "type": "[]*BlueprintRoles", // Array of BlueprintRoles objects.
+                    "definition": {
+                      // BlueprintRoles groups roles by level (e.g., "project").
+                      "attributes": {
+                        // Level: The level at which roles are required (e.g., "project", "organization").
+                        "Level": "string",
+                        // Roles: List of IAM role IDs required at this level.
+                        "Roles": {
+                          "type": "[]string",
+                          "definition": "string"
+                        }
+                      }
+                    }
+                  },
+                  // Services: List of required GCP services to be enabled. Gen: auto-generated from test/setup/main.tf.
+                  "Services": {
+                    "type": "[]string",
+                    "definition": "string" // Each item is a service domain name (e.g., "compute.googleapis.com").
+                  }
+                }
+              }
+            },
+            // BlueprintUI defines the user interface rendering for the blueprint. Gen: partial.
+            "Ui": {
+              "type": "*BlueprintUI", // Type definition for BlueprintUI.
+              "definition": {
+                 // BlueprintUI holds UI specific metadata for inputs (deployment page) and outputs (runtime info).
+                 // Note: The provided JSON stops here, but the definition would continue with 'Input' and 'Runtime' attributes based on the Go structs 'BlueprintUIInput' and 'BlueprintUIOutput'.
+                 // Example (structure based on Go defs):
+                 // "attributes": {
+                 //   "Input": { /* Definition of BlueprintUIInput */ },
+                 //   "Runtime": { /* Definition of BlueprintUIOutput */ }
+                 // }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

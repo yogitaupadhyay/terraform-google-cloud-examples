@@ -1,4 +1,5 @@
-# Terraform "Hello, World" example
+
+# Add your title here
 
 This folder contains a "Hello, World" example of a [Terraform](https://www.terraform.io/) file on Google Cloud Platform (GCP).
 
@@ -76,3 +77,26 @@ This Terraform file deploys a single server on Google Cloud Platform (GCP) using
   ```bash
   terraform destroy
   ```
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Inputs
+
+No inputs.
+
+## Outputs
+
+No outputs.
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+
+
+
+
+
+
+
+
+
+
+
+					

@@ -71,7 +71,7 @@ resource "google_compute_autoscaler" "example" {
     min_replicas    = 2
     cooldown_period = 60
 
-    cpu_utilization {
+    cpu_utilization = {
       target = 0.5
     }
   }
@@ -80,15 +80,15 @@ resource "google_compute_autoscaler" "example" {
 # Create a Google Compute instance Template
 resource "google_compute_instance_template" "example" {
   machine_type  = "f1-micro"
-  
+
   disk {
     source_image = "ubuntu-1604-lts"
   }
-  
+
   network_interface {
     network = "default"
   }
-  
+
   metadata_startup_script = "echo 'Hello, World' > index.html ; nohup busybox httpd -f -p ${var.server_port} &"
 }
 

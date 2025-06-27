@@ -4,6 +4,13 @@ provider "google" {
   region  = "us-east1"
 }
 
+# Input variable: server port
+variable "server_port" {
+  description = "The port the server will use for HTTP requests"
+  default = "8080"
+}
+
+
 # Create a Google Compute Firewall
 resource "google_compute_firewall" "instance" {
   name    = "terraform-example-instance"
@@ -22,13 +29,13 @@ resource "google_compute_instance" "example" {
   name          = "example"
   machine_type  = "f1-micro"
   zone          = "us-east1-b"
-  
+
   boot_disk {
     initialize_params {
       image = "ubuntu-1604-lts"
     }
   }
-  
+
   network_interface {
     network = "default"
 
@@ -36,8 +43,8 @@ resource "google_compute_instance" "example" {
       // Ephemeral IP
     }
   }
-  
+
   tags = ["terraform-example"]
-  
+
   metadata_startup_script = "echo 'Hello, World' > index.html ; nohup busybox httpd -f -p ${var.server_port} &"
 }

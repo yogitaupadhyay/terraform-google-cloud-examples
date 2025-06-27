@@ -1,21 +1,37 @@
+/**
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 # Configure the Google Cloud provider
 provider "google" {
-  project = "terraform-examples-gcloud"
-  region  = "us-east1-b"
+  project = "solutions-yogita"
+  region  = "us-central1"
 }
 
-# Create a Google Compute instance
+# Create a Google Compute instance: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance
 resource "google_compute_instance" "example" {
   name          = "example"
   machine_type  = "f1-micro"
   zone          = "us-east1-b"
-  
+
   boot_disk {
     initialize_params {
-      image = "ubuntu-1604-lts"
+      image = "debian-11-bullseye-v20250415"
     }
   }
-  
+
   network_interface {
     network = "default"
 
