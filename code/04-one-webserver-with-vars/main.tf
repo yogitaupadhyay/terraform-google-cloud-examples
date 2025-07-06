@@ -25,7 +25,7 @@ resource "google_compute_instance" "example" {
   
   boot_disk {
     initialize_params {
-       image = "projects/debian-cloud/global/images/debian-12-bookworm-arm64-v20250610" # Example: specific version
+       image = "projects/centos-cloud/global/images/centos-stream-9-arm64-v20250610" # Example: specific version
     }
   }
   
