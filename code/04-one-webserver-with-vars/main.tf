@@ -25,7 +25,7 @@ resource "google_compute_instance" "example" {
   
   boot_disk {
     initialize_params {
-      image = "ubuntu-1604-lts"
+       image = "projects/ubuntu-os-cloud/global/images/ubuntu-2204-lts-jammy-v20250604" # Example: specific version
     }
   }
   
