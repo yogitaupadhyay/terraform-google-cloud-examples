@@ -21,11 +21,11 @@ resource "google_compute_firewall" "instance" {
 resource "google_compute_instance" "example" {
   name          = "example"
   machine_type  = "f1-micro"
-  zone          = "us-central1-b"
+  zone          = "us-east1-b"
   
   boot_disk {
     initialize_params {
-      image = "ubuntu-1604-lts"
+      image = "debian-11-bullseye-v20250415"
     }
   }
   
