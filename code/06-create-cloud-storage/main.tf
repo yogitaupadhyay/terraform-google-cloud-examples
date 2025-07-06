@@ -1,7 +1,7 @@
 # Configure the Google Cloud provider
 provider "google" {
-  project = "terraform-examples-gcloud"
-  region  = "us-east1"
+  project = "cloud-appcenter-e2e-testing"
+  region  = "us-central1"
 }
 
 # Create a Google Cloud Storage Bucket
