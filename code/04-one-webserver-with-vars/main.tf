@@ -25,7 +25,7 @@ resource "google_compute_instance" "example" {
   
   boot_disk {
     initialize_params {
-      image = "debian-11-bullseye-v20250415"
+      image = "ubuntu-1604-lts"
     }
   }
   
