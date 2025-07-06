@@ -1,7 +1,7 @@
 # Configure the Google Cloud provider
 provider "google" {
-  project = "terraform-examples-gcloud"
-  region  = "us-east1"
+  project = "cloud-appcenter-e2e-testing"
+  region  = "us-central1"
 }
 
 # Create a Google Compute Firewall
@@ -21,7 +21,7 @@ resource "google_compute_firewall" "instance" {
 resource "google_compute_instance" "example" {
   name          = "example"
   machine_type  = "f1-micro"
-  zone          = "us-east1-b"
+  zone          = "us-central1-b"
   
   boot_disk {
     initialize_params {
