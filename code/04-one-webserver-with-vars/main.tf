@@ -1,6 +1,6 @@
 # Configure the Google Cloud provider
 provider "google" {
- project = "solutions-yogita"
+ project = "cloud-appcenter-e2e-testing"
   region  = "us-central1"
 }
 
