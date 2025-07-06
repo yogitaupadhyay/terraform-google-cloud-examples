@@ -1,12 +1,12 @@
 # Configure the Google Cloud provider
 provider "google" {
-  project = "cloud-appcenter-e2e-testing"
+ project = "solutions-yogita"
   region  = "us-central1"
 }
 
 # Create a Google Compute Firewall
 resource "google_compute_firewall" "instance" {
-  name    = "terraform-example-instance"
+  name    = "terraform-example-instance-yogita"
   network = "default"
 
   source_ranges = ["0.0.0.0/0"]
@@ -19,7 +19,7 @@ resource "google_compute_firewall" "instance" {
 
 # Create a Google Compute instance
 resource "google_compute_instance" "example" {
-  name          = "example"
+  name          = "example-yogita"
   machine_type  = "f1-micro"
   zone          = "us-east1-b"
   
