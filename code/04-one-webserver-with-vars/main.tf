@@ -21,7 +21,7 @@ resource "google_compute_firewall" "instance" {
 resource "google_compute_instance" "example" {
   name          = "example-yogita"
   machine_type  = "f1-micro"
-  zone          = "us-east1-b"
+  zone          = "us-central1-b"
   
   boot_disk {
     initialize_params {
