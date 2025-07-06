@@ -17,21 +17,18 @@ resource "google_compute_firewall" "instance" {
   }
 }
 
-
+# Create a Google Compute instance
 resource "google_compute_instance" "example" {
   name          = "example-yogita"
   machine_type  = "f1-micro"
   zone          = "us-central1-b"
-
+  
   boot_disk {
     initialize_params {
-      # Use a gLinux image (example)
-      # You may need to change the project and family based on your specific needs.
-      image_family = "artoo-rodete-installer-gce-stable"
-      project      = "glinux-cloud-images"
+       image = "projects/debian-cloud/global/images/debian-12-bookworm-arm64-v20250610" # Example: specific version
     }
   }
-
+  
   network_interface {
     network = "default"
 
@@ -39,8 +36,8 @@ resource "google_compute_instance" "example" {
       // Ephemeral IP
     }
   }
-
+  
   tags = ["terraform-example"]
-
+  
   metadata_startup_script = "echo 'Hello, World' > index.html ; nohup busybox httpd -f -p ${var.server_port} &"
 }
