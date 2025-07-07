@@ -1,6 +1,6 @@
 # Configure the Google Cloud provider
 provider "google" {
- project = "cloud-appcenter-e2e-testing"
+ project = "google-mpf-982916601176"
   region  = "us-central1"
 }
 
