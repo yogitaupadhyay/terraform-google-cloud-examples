@@ -1,6 +1,6 @@
 # Configure the Google Cloud provider
 provider "google" {
-  project = "cloud-appcenter-e2e-testing"
+  project = var.project_id
   region  = "us-central1"
 }
 
